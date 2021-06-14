@@ -3,16 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Magnetic Field using Babylon</title>
+    <title>Dipole Simulation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/static/css/main.css" />
-    <script src="/static/javascripts/demo.js"></script>
-    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+    <script src="/static/javascripts/mag_field_clean.js"></script>
+    <script src="/static/javascripts/babylon.custom.js"></script>
+    <script src="/static/javascripts/babylon.gui.min.js"></script>
+    <script src="/static/javascripts/showAxis.js"></script>
+    <script src="/static/javascripts/gen_starting_point.js"></script>
+    <!--script src="https://cdn.babylonjs.com/babylon.max.js"></script>
+    <script src="https://unpkg.com/earcut@2.1.1/dist/earcut.min.js"></script>
+    <script> src="https://data.jsdelivr.com/v1/package/npm/babylonjs-gui/badge"</script>
+    <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+    <script> src="https://www.jsdelivr.com/package/npm/babylonjs-gui"</script>
+    <script src= "https://preview.babylonjs.com/gui/babylon.gui.js"></script-->
     <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
 </head>
 <body>
-    <h>Saurabh yo</h>
-    <canvas id="renderCanvas"></canvas> <!--//touch-action="none" does something, check what later on-->
-
+    <canvas id="renderCanvas" data-toggle="tooltip" title="Drag poles to simulate field"></canvas> <!--//touch-action="none" does something, check what later on-->
+    
 </body>
 </html>

@@ -1,12 +1,11 @@
 //Server JS file
 //Dependancies
-
 const express = require('express');
 const path = require('path');
 const app = express();
-var BABYLON = require('babylonjs')
+var BABYLON = require('babylonjs');
 if(BABYLON){
-  console.log("Hey!")
+  console.log("Hey!");
 }
 //Setting up a view engine
 app.set('view engine', 'ejs');
@@ -16,10 +15,13 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 
 //Home page
 app.get('/', function(req, res) {
-    res.render('index')
+    res.render('index');
   });
 
+app.get('/g', function(req, res){
+  res.render('gaurav');
+});
 //Start a server
 app.listen(3000, function() {
-    console.log('listening on 3000')
+    console.log('listening on 3000');
   });

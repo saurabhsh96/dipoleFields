@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var scene = new BABYLON.Scene(engine);
 
         // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
-        var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), scene);
+        var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 10, -10), scene);
         //var camera1 = new BABYLON.ArcRotateCamera('camera2', Math.PI, Math.PI/2, 0, BABYLON.Vector3.Zero(), scene);
         // target the camera to scene origin
         camera.setTarget(BABYLON.Vector3.Zero());
@@ -32,28 +32,62 @@ window.addEventListener('DOMContentLoaded', function(){
         // move the sphere upward 1/2 of its height
         north_s.position.x = -2;
 
-        var south_s = BABYLON.Mesh.CreateSphere('south', 16, 2, scene);
+        //var south_s = BABYLON.Mesh.CreateSphere('south', 16, 2, scene);
 
-        south_s.position.x = 2;
+        //south_s.position.x = 2;
         // create a built-in "ground" shape;
-        //var ground = BABYLON.Mesh.CreateGround('ground1', 6, 1, 2, scene);
+        //var ground = BABYLON.Mesh.CreateGround('ground1', 6, 1, 0, scene);
         // return the created scene"
-        var south_mat = new BABYLON.StandardMaterial("south_mat", scene);
+        //var south_mat = new BABYLON.StandardMaterial("south_mat", scene);
         var north_mat = new BABYLON.StandardMaterial("north_mat", scene);
         
-        south_mat.diffuseTexture = new BABYLON.Texture("/static/images/south_pole.png", scene);
+        //south_mat.diffuseTexture = new BABYLON.Texture("/static/images/south_pole.png", scene);
         north_mat.diffuseTexture = new BABYLON.Texture("/static/images/north_pole.png", scene);
 
-        south_s.material = south_mat;
+        //south_s.material = south_mat;
         north_s.material = north_mat;
 
+        //var ground = BABYLON.Mesh.CreateGround("ground", 10, 10, 10, scene, false);
+        //var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
+        //groundMaterial.specularColor = BABYLON.Color3.Black();
+        //ground.material = groundMaterial;
+        //scene.registerAfterRender(function() {
+        //    north_s.rotate(BABYLON.Axis.Y, Math.PI/64, BABYLON.Space.WORLD); 
+        //    south_s.rotate(BABYLON.Axis.Y, Math.PI/64, BABYLON.Space.WORLD);
+            //wheelRI.rotate(BABYLON.Axis.Z, Math.PI/64, BABYLON.Space.WORLD);
+            //wheelRO.rotate(BABYLON.Axis.Z, Math.PI/64, BABYLON.Space.WORLD); 
+        // });
         //Test rotation:
         //var axis = new BABYLON.Vector3(1, 1, 1);
         //var angle = Math.PI / 8;
         //var quaternion = new BABYLON.Quaternion.RotationAxis(axis, angle);
         //south_s.rotationQuaternion = quaternion;
+    ///-------------Events:
+
+        var canvas1 = engine.getRenderingCanvas();
+        var startPoint;
+        var currentMesh;
+        
+        window.addEventListener("click", function (evt) {
+            // We try to pick an object
+            var pickResult = scene.pick(evt.clientX, evt.clientY);
+            if (pickResult.hit) {
+                impact.position.x = pickResult.pickedPoint.x;
+                impact.position.y = pickResult.pickedPoint.y;
+            } 
+        
+        });
+         
+            
+        //canvas.addEventListener("pointerup", onPointerUp, false);
+
+        //scene.onDispose = function () {
+         //   canvas.removeEventListener("pointerdown", onPointerDown);
+         //   canvas.removeEventListener("pointerup", onPointerUp);
+         //   canvas.removeEventListener("pointermove", onPointerMove);
+        //}
         return scene;
-    }
+    };
 
     // call the createScene function
     var scene = createScene();
@@ -69,17 +103,17 @@ window.addEventListener('DOMContentLoaded', function(){
     //    return field_p       
     //}"""
 
-    var all_field = function(pt_pos_vec){
+    /*var all_field = function(pt_pos_vec){
         var mag_field = BABYLON.Vector3();
         var north_pos = scene.getElementByName("north").position;
         var south_pos = scene.getElementByName("south").position;
         console.log(north_pos, south_pos);
         return 0;
-    }
+    }*/
     // run the render loop
     engine.runRenderLoop(function(){
-        console.log("In loop");
-        var all = all_field(BABYLON.Vector3(0,0,0));
+        //console.log("In loop");
+        //var all = all_field(BABYLON.Vector3(0,0,0));
         scene.render();
         //
     });
